@@ -1,13 +1,15 @@
 #ifndef MONTY_H
 #define MONTY_H
 
-#include <stddef.h>
 #include <stdio.h>
+#include <stddef.h>
 #include <stdlib.h>
 #include <string.h>
+#include <ctype.h>
 
-static unsigned int line;
+extern unsigned int line;
 extern int v;
+
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
  * @n: integer
@@ -39,8 +41,9 @@ typedef struct instruction_s
 } instruction_t;
 
 void handle(char *s, stack_t **stack);
-void check(char *arg, stack_t **stack);
-void push(stack_t **stack, unsigned int line_number);
-void pall(stack_t **stack, unsigned int line_number);
+void check(char **arg, stack_t **stack);
+void push(stack_t **stack, char *s, unsigned int line);
+void pall(stack_t **stack);
+char *my_strdup(const char *str);
 
 #endif

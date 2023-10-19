@@ -1,20 +1,23 @@
 #include "monty.h"
 
-void check(char *arg, stack_t **stack)
+int v;
+unsigned int line = 1;
+
+void check(char **arg, stack_t **stack)
 {
-	if (strcmp(arg, "push") == 0)
+	if (strcmp(arg[0], "push") == 0)
 	{
+		push(stack, arg[1], line);
 		line++;
-		push(stack, line);
 	}
-	else if (strcmp(arg, "pall") == 0)
+	else if (strcmp(arg[0], "pall") == 0)
 	{
+		pall(stack);
 		line++;
-		pall(stack, line);
 	}
 	else
 	{
-		fprintf(stderr, "L%d: unknown instruction %s\n", line, arg);
+		fprintf(stderr, "L%d: unknown instruction %s\n", line, arg[0]);
 		exit(EXIT_FAILURE);
 	}
 }

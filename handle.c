@@ -1,8 +1,5 @@
 #include "monty.h"
 
-static unsigned int line = 1;
-int v;
-
 void handle(char *s, stack_t **stack)
 {
 	char *tok, **arr;
@@ -14,15 +11,38 @@ void handle(char *s, stack_t **stack)
 
 	while (tok != NULL)
 	{
-		arr[i] = strdup(tok);
+		arr[i] = my_strdup(tok);
+
+		if (arr[i] == NULL)
+		{
+			perror("Error: malloc failed");
+			exit(EXIT_FAILURE);
+		}
+
 		tok = strtok(NULL, " \n\t");
 		i++;
 	}
 
 	arr[i] = NULL;
 
-	if (arr[1] != NULL)
-		v = atoi(arr[1]);
+	check(arr, stack);
+}
+char *my_strdup(const char *str)
+{
+	char *new_str;
+	size_t len = strlen(str);
 
-	check(arr[0], stack);
+	if (str == NULL) {
+		return NULL;
+	}
+
+	new_str = (char *)malloc(len + 1);
+	if (new_str == NULL) {
+		perror("Error: malloc failed");
+		exit(EXIT_FAILURE);
+	}
+
+	strcpy(new_str, str);
+
+	return new_str;
 }
