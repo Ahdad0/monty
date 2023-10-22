@@ -45,5 +45,6 @@ void check(char **arg, stack_t **stack);
 void push(stack_t **stack, char *s, unsigned int line);
 void pall(stack_t **stack);
 char *my_strdup(const char *str);
+void free_n(stack_t **stack);
 
 #endif

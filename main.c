@@ -22,7 +22,8 @@ int main (int argc, char **argv)
 
 	 while (fgets(line, sizeof(line), file) != NULL)
 	 {
-		 handle(line, &stack);
+		 if (strlen(line) != 1)
+			 handle(line, &stack);
 	 }
 
 	 fclose(file);
