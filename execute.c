@@ -1,9 +1,14 @@
 #include "monty.h"
 
+/**
+ * pall - print all the node
+ *
+ * @stack: head of the node
+ */
 void pall(stack_t **stack)
 {
 	stack_t *curr = *stack;
-	
+
 	if (curr != NULL)
 	{
 		while (curr != NULL)
@@ -14,6 +19,13 @@ void pall(stack_t **stack)
 	}
 }
 
+/**
+ * push - push 's' into the stack
+ *
+ * @stack: head of node
+ * @s: value
+ * @line: line number
+ */
 void push(stack_t **stack, char *s, unsigned int line)
 {
 	stack_t *node;

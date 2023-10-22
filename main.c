@@ -1,32 +1,48 @@
 #include "monty.h"
 
-int main (int argc, char **argv)
+
+/**
+ * main - main function
+ *
+ * @argc: argument count
+ * @argv: argument vector
+ *
+ * Return: 0
+ */
+int main(int argc, char **argv)
 {
-	 FILE *file;
-	 char line[250];
-	 stack_t *stack = NULL;
+	FILE *file;
+	char line[250];
+	stack_t *stack = NULL, *current = NULL;
 
-	 if (argc == 1 || argc > 2)
-	 {
-		 fprintf(stderr, "USAGE: monty file\n");
-		 return (EXIT_FAILURE);
-	 }
+	if (argc == 1 || argc > 2)
+	{
+		fprintf(stderr, "USAGE: monty file\n");
+		return (EXIT_FAILURE);
+	}
 
-	 file = fopen(argv[1], "r");
+	file = fopen(argv[1], "r");
 
-	 if (file == NULL)
-	 {
-		 fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
-		 return (EXIT_FAILURE);
-	 }
+	if (file == NULL)
+	{
+		fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
+		return (EXIT_FAILURE);
+	}
 
-	 while (fgets(line, sizeof(line), file) != NULL)
-	 {
-		 if (strlen(line) != 1)
-			 handle(line, &stack);
-	 }
+	while (fgets(line, sizeof(line), file) != NULL)
+	{
+		if (strlen(line) != 1)
+			handle(line, &stack);
+	}
 
-	 fclose(file);
+	while (stack != NULL)
+	{
+		current = stack;
+		stack = stack->next;
+		free(current);
+	}
 
-	 return (0);
+	fclose(file);
+
+	return (0);
 }

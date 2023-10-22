@@ -1,42 +1,27 @@
 #include "monty.h"
 
-int v;
-unsigned int line = 1;
-
+/**
+ * check - check for the right intruction
+ *
+ * @arg: arguments
+ * @stack: head of node
+ */
 void check(char **arg, stack_t **stack)
 {
-	stack_t *current;
 	int i;
+	static unsigned int line = 1;
 
 	if (strcmp(arg[0], "push") == 0)
 	{
 		push(stack, arg[1], line);
-		for (i = 0; arg[i]; i++)
-		{
-			free(arg[i]);
-		}
-		free(arg);
 		line++;
 	}
 	else if (strcmp(arg[0], "pall") == 0)
 	{
 		pall(stack);
-		for (i = 0; arg[i]; i++)
-		{
-			free(arg[i]);
-		}
-		free(arg);
-
-		while (*stack != NULL)
-		{
-			current = *stack;
-			*stack = (*stack)->next;
-			free(current);
-		}
-
 		line++;
 	}
-	else 
+	else
 	{
 		fprintf(stderr, "L%d: unknown instruction %s\n", line, arg[0]);
 		for (i = 0; arg[i]; i++)

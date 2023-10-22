@@ -1,5 +1,11 @@
 #include "monty.h"
 
+/**
+ * handle - separate argument
+ *
+ * @s: string
+ * @stack: head of the node
+ */
 void handle(char *s, stack_t **stack)
 {
 	char *tok, **arr;
@@ -35,17 +41,28 @@ void handle(char *s, stack_t **stack)
 
 	check(arr, stack);
 }
+
+/**
+ * my_strdup - duplicate a string
+ *
+ * @str: string
+ *
+ * Return: new string
+ */
 char *my_strdup(const char *str)
 {
 	char *new_str;
-	size_t len = strlen(str);
+	size_t len;
+
+	len = strlen(str);
 
 	if (str == NULL)
 	{
-		return NULL;
+		return (NULL);
 	}
 
-	new_str = (char *)malloc(len + 1);
+	new_str = malloc(len + 1);
+
 	if (new_str == NULL)
 	{
 		perror("Error: malloc failed");
@@ -54,5 +71,5 @@ char *my_strdup(const char *str)
 
 	strcpy(new_str, str);
 
-	return new_str;
+	return (new_str);
 }
