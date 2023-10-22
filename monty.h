@@ -39,8 +39,10 @@ typedef struct instruction_s
 
 void handle(char *s, stack_t **stack);
 void check(char **arg, stack_t **stack);
-void push(stack_t **stack, char *s, unsigned int line);
+void push(stack_t **stack, char *s[], unsigned int line);
 void pall(stack_t **stack);
 char *my_strdup(const char *str);
+void free_stack(stack_t **stack);
+void free_s(char **s);
 
 #endif

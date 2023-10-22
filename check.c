@@ -13,12 +13,13 @@ void check(char **arg, stack_t **stack)
 
 	if (strcmp(arg[0], "push") == 0)
 	{
-		push(stack, arg[1], line);
+		push(stack, arg, line);
 		while (arg[i] != NULL)
 		{
 			free(arg[i]);
 			i++;
 		}
+		free(arg);
 		line++;
 	}
 	else if (strcmp(arg[0], "pall") == 0)
@@ -29,11 +30,18 @@ void check(char **arg, stack_t **stack)
 			free(arg[i]);
 			i++;
 		}
+		free(arg);
 		line++;
 	}
 	else
 	{
 		fprintf(stderr, "L%d: unknown instruction %s\n", line, arg[0]);
+		while (arg[i] != NULL)
+		{
+			free(arg[i]);
+			i++;
+		}
+		free(arg);
 		exit(EXIT_FAILURE);
 	}
 }
