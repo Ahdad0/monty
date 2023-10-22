@@ -42,9 +42,7 @@ void push(stack_t **stack, char *s, unsigned int line)
 	}
 
 	if (che <= 1)
-	{
 		num = s[0];
-	}
 	else if (che > 1)
 	{
 		num = s[1];
