@@ -20,6 +20,22 @@ void pall(stack_t **stack)
 }
 
 /**
+ * pint - print value at top of stack
+ *
+ * @stack: head of the node
+ * @line: line number
+ */
+void pint(stack_t **stack, unsigned int line)
+{
+	if (*stack == NULL)
+	{
+		fprintf(stderr, "L%d: can't pint, stack empty\n", line);
+		exit(EXIT_FAILURE);
+	}
+	printf("%d\n", (*stack)->n);
+}
+
+/**
  * push - push 's' into the stack
  *
  * @stack: head of node
