@@ -20,6 +20,29 @@ void pall(stack_t **stack)
 }
 
 /**
+ * pop - removes the top element of the stack
+ *
+ * @stack: head of the node
+ * @line: line number
+ */
+void pop(stack_t **stack, unsigned int line)
+{
+	stack_t *curr = *stack;
+
+	if (*stack == NULL)
+	{
+		fprintf(stderr, "L%d: can't pop an empty stack\n", line);
+		exit(EXIT_FAILURE);
+	}
+
+	if (curr)
+	{
+		*stack = curr->next;
+		free(curr);
+	}
+}
+
+/**
  * pint - print value at top of stack
  *
  * @stack: head of the node
@@ -84,38 +107,4 @@ void push(stack_t **stack, char *s[], unsigned int line)
 		node->next = NULL;
 
 	*stack = node;
-}
-
-/**
- * free_s - free string
- *
- * @s: string
- */
-void free_s(char **s)
-{
-	int i = 0;
-
-	while (s[i] != NULL)
-	{
-		free(s[i]);
-		i++;
-	}
-	free(s);
-}
-
-/**
- * free_stack - free node
- *
- * @stack: head of node
- */
-void free_stack(stack_t **stack)
-{
-	stack_t *curr;
-
-	while (*stack != NULL)
-	{
-		curr = *stack;
-		*stack = (*stack)->next;
-		free(curr);
-	}
 }

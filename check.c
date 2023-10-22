@@ -28,6 +28,12 @@ void check(char **arg, stack_t **stack)
 		free_s(arg);
 		line++;
 	}
+	else if (strcmp(arg[0], "pop") == 0)
+	{
+		pop(stack, line);
+		free_s(arg);
+		line++;
+	}
 	else
 	{
 		fprintf(stderr, "L%d: unknown instruction %s\n", line, arg[0]);
