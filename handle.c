@@ -12,7 +12,11 @@ void handle(char *s, stack_t **stack)
 	int i = 0, j;
 
 	arr = malloc(sizeof(char *) * 3);
-
+	if (arr == NULL)
+	{
+		perror("Error: malloc failed");
+		exit(EXIT_FAILURE);
+	}
 	tok = strtok(s, " \n\t");
 
 	while (tok != NULL)

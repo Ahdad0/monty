@@ -29,6 +29,10 @@ void pall(stack_t **stack)
 void push(stack_t **stack, char *s, unsigned int line)
 {
 	stack_t *node;
+	int che;
+	char num;
+
+	che = strlen(s);
 
 	node = malloc(sizeof(stack_t));
 	if (node == NULL)
@@ -37,7 +41,16 @@ void push(stack_t **stack, char *s, unsigned int line)
 		exit(EXIT_FAILURE);
 	}
 
-	if (s == NULL || isdigit(s[0]) == 0)
+	if (che <= 1)
+	{
+		num = s[0];
+	}
+	else if (che > 1)
+	{
+		num = s[1];
+	}
+
+	if (s == NULL || isdigit(num) == 0)
 	{
 		fprintf(stderr, "L%d: usage: push integer\n", line);
 		exit(EXIT_FAILURE);
