@@ -35,11 +35,7 @@ void pop(stack_t **stack, unsigned int line)
 		exit(EXIT_FAILURE);
 	}
 
-	if (curr)
-	{
-		*stack = curr->next;
-		free(curr);
-	}
+	*stack = curr->next;
 }
 
 /**
