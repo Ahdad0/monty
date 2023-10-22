@@ -40,6 +40,7 @@ void pop(stack_t **stack, unsigned int line)
 	if (curr != NULL)
 	{
 		*stack = curr->next;
+		free(curr);
 	}
 }
 
