@@ -37,7 +37,10 @@ void pop(stack_t **stack, unsigned int line)
 
 	curr = *stack;
 
-	*stack = curr->next;
+	if (curr != NULL)
+	{
+		*stack = curr->next;
+	}
 }
 
 /**
