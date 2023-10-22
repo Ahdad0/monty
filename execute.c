@@ -20,6 +20,41 @@ void pall(stack_t **stack)
 }
 
 /**
+ * swap - swap two value from top
+ *
+ * @stack: head of the node
+ * @line: line of number
+ */
+void swap(stack_t **stack, unsigned int line)
+{
+	stack_t *curr = *stack, *last;
+
+	if ((*stack) == NULL || (*stack)->next == NULL)
+	{
+		fprintf(stderr, "L%d: can't swap, stack too short\n", line);
+		exit(EXIT_FAILURE);
+	}
+
+
+	if (curr != NULL && curr->next != NULL)
+	{
+		last = curr->next;
+
+		if (last->next != NULL)
+		{
+			last->next->prev = curr;
+		}
+
+		curr->next = last->next;
+		last->prev = NULL;
+		last->next = curr;
+		curr->prev = last;
+
+		*stack = last;
+	}
+}
+
+/**
  * pop - removes the top element of the stack
  *
  * @stack: head of the node

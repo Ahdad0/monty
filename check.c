@@ -34,6 +34,12 @@ void check(char **arg, stack_t **stack)
 		free_s(arg);
 		line++;
 	}
+	else if (strcmp(arg[0], "swap") == 0)
+	{
+		swap(stack, line);
+		free_s(arg);
+		line++;
+	}
 	else
 	{
 		fprintf(stderr, "L%d: unknown instruction %s\n", line, arg[0]);
